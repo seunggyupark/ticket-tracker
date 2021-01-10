@@ -1,15 +1,23 @@
 import React from 'react';
 import './Home.scss';
 
-import Button from '../components/UI/Button';
+import Accordian from '../components/UI/Accordian/Accordian';
+
+const faq = {
+    title: 'This is a funny joke',
+    tags: [],
+    content: 'Please laugh at my joke, it is really funny!'
+}
 
 const Home: React.FC = () => {
     return (
         <div className="home">
             <div className="home-container">
                 <div className="home-button-container">
-                    <Button link={'/'}>create new ticket</Button>
-                    <Button link={'/'}>view past tickets</Button>
+                    <Accordian title={faq.title} tags={faq.tags} content={faq.content}/>
+                    <Accordian title={faq.title} tags={faq.tags} content={faq.content}/>
+                    <Accordian title={faq.title} tags={faq.tags} content={faq.content}/>
+                    <Accordian title={faq.title} tags={faq.tags} content={faq.content}/>
                 </div>
             </div>
         </div>

@@ -1,0 +1,56 @@
+.accordian {
+  width: 35%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.accordian__button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 14px;
+  background-color: #e6e6e6;
+  outline: none;
+  border: none;
+  transition: background-color 0.6s ease;
+  &:hover,
+  &.active {
+    background-color: #ccc;
+  }
+  i {
+    color: #808080;
+    transition: transform 0.4s ease;
+    &.rotate {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.accordian__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin-right: 6px;
+  }
+}
+
+.accordian__tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordian__content {
+  width: 100%;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordian__text {
+  padding: 15px;
+  font-size: 14px;
+}
