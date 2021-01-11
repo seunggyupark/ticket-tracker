@@ -7,6 +7,7 @@ interface AccordianProps {
     title: string;
     content: string;
     tags: string[];
+    addHeightToParent: (num:number) => void;
 }
 
 const Accordian: React.FC<AccordianProps> = (props) => {
@@ -18,9 +19,11 @@ const Accordian: React.FC<AccordianProps> = (props) => {
         if (!active && content.current) {
             setActive(true);
             setMaxHeight(`${content.current.scrollHeight}px`);
+            props.addHeightToParent(content.current.scrollHeight);
         } else {
             setActive(false);
             setMaxHeight('0px');
+            props.addHeightToParent(-content.current!.scrollHeight);
         }
     }
 
