@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.scss';
+import { Link } from 'react-router-dom';
 
 import Accordian from '../components/UI/Accordian/Accordian';
 
@@ -34,16 +35,12 @@ const faq = [
 
 const Home: React.FC = () => {
     return (
-        <div className="home">
-            <div className="home-container">
-                <div className="home__faqContainer">
-                    <p className="home__faqContainer-FAQ">FAQ</p>
-                    <div className="home__faqContainer-header"><p>If you cannot find a solution below, please&nbsp;</p><a href='/'> create a new ticket.</a></div>
-                    {faq.map((element: {title:string; tags:string[]; content:string}, index: number) => {
-                        return <Accordian addHeightToParent={() => {}} key={index} title={element.title} tags={element.tags} content={element.content}/>
-                    })}
-                </div>
-            </div>
+        <div className="home__faqContainer">
+            <p className="home__faqContainer-FAQ">FAQ</p>
+            <div className="home__faqContainer-header"><p>If you cannot find a solution below, please&nbsp;</p><Link to='/new'> create a new ticket.</Link></div>
+            {faq.map((element: {title:string; tags:string[]; content:string}, index: number) => {
+                return <Accordian addHeightToParent={() => {}} key={index} title={element.title} tags={element.tags} content={element.content}/>
+            })}
         </div>
     );
 }

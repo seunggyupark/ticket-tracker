@@ -1,0 +1,62 @@
+.newTicket {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        
+    label {
+        margin: 10px 0px;
+        font-weight: 400;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        border: none;
+        outline: none;
+    }
+
+    input {
+        padding: 3px 6px;
+        margin-right: 6px;
+        border-radius: 5px;
+        background: #bebebe;
+        transition: 0.2s ease;
+        &:active,
+        &:hover {
+            color: #fff; 
+            background-color: #209CEE;
+        }
+    }
+
+    button {
+        padding: 6px 9px;
+        margin: 10px 0px;
+        font-size: 16px;
+        color: #fff; 
+        background-color: #209CEE;
+        border-radius: 5px;
+        transition: 0.2s ease;
+        &:active,
+        &:hover {
+            background-color: #1d88cf;
+        }
+    }
+
+    select {
+        padding: 3px 6px;
+        border-radius: 3px;
+    }
+
+    textarea {
+        padding: 3px 6px;
+        border-radius: 3px;
+        resize: none;
+    }
+}

@@ -1,6 +1,6 @@
 .accordian {
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .accordian__button {
@@ -11,19 +11,28 @@
   cursor: pointer;
   padding: 15px;
   font-size: 14px;
-  background-color: #e6e6e6;
   outline: none;
   border: none;
   transition: background-color 0.6s ease;
-  &:hover,
-  &.active {
-    background-color: #ccc;
-  }
   i {
-    color: #808080;
+    color: #727272;
     transition: transform 0.4s ease;
     &.rotate {
       transform: rotate(90deg);
+    }
+  }
+  &.accordian__button-parent {
+    background-color: #ccc;
+    &:hover,
+    &.active {
+      background-color: #919191;
+    }
+  }
+  &.accordian__button-child {
+    background-color:#e6e6e6;
+    &:hover,
+    &.active {
+      background-color: #ccc;
     }
   }
 }

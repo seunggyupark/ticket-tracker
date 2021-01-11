@@ -1,19 +1,3 @@
-.home {
-    display: grid;
-    grid-template: repeat(16, 6.25%) / repeat(16, 6.25%);
-    height: 100%;
-    width: 100%;
-}
-
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    grid-row: 4;
-    grid-column: 1 / 17;
-}
-
 .home__faqContainer {
     display: flex;
     flex-direction: column;

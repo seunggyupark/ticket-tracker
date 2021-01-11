@@ -29,7 +29,7 @@ const Accordian: React.FC<AccordianProps> = (props) => {
 
     return (
         <div className="accordian">
-            <button className={`accordian__button ${active && 'active'}`} onClick={toggleHandler}>
+            <button className={`accordian__button accordian__button-child ${active && 'active'}`} onClick={toggleHandler}>
                 <div className="accordian__title">
                     <p>{props.title}</p>
                     <div className="accordian__tags">
