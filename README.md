@@ -15,3 +15,4 @@
 2. React-Transition-Group between pages
 3. Planning to expand as a fullstack application with Postgre/Node.js.
 4. Change Links from React-Router to NavLinks with styling
+5. Need to fix the state updates on tags when creating a ticket after sending one.
