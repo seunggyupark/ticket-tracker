@@ -1,43 +1,19 @@
 import React from 'react';
 import './ViewTickets.scss'
+import { useSelector } from 'react-redux';
+import { StateInterface, TicketInterface } from '../store/reducer';
 
 import AccordianContainer from '../components/UI/AccordianContainer/AccordianContainer';
 
-const openTickets = {
-    title: 'Open',
-    amount: 2,
-    tickets: [
-        {
-            title: 'Ticket #1',
-            tags: ['Hardware', 'Software', 'Electronic'],
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        {
-            title: 'Ticket #2',
-            tags: ['Hardware', 'Software', 'Electronic'],
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        }
-    ]
-};
-
-const closedTickets = {
-    title: 'Closed',
-    amount: 1,
-    tickets: [
-        {
-            title: 'Ticket #1',
-            tags: ['Hardware', 'Software', 'Electronic'],
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        }
-    ]
-};
-
 const ViewTickets: React.FC = props => {
+    const tickets = useSelector<StateInterface, TicketInterface[]>(state => state.tickets.items)
+    const openTickets = tickets.filter(ticket => ticket.status === 'open');
+    const closedTickets = tickets.filter(ticket => ticket.status === 'closed');
 
     return (
         <div className="viewTickets__tickets">
-            <AccordianContainer info={openTickets}/>
-            <AccordianContainer info={closedTickets}/>
+            <AccordianContainer title='Open' tickets={openTickets} addCloseButton={true} />
+            <AccordianContainer title='Closed' tickets={closedTickets} addCloseButton={false} />
         </div>
     );
 }

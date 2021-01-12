@@ -38,9 +38,9 @@ const Home: React.FC = () => {
         <div className="home__faqContainer">
             <p className="home__faqContainer-FAQ">FAQ</p>
             <div className="home__faqContainer-header"><p>If you cannot find a solution below, please&nbsp;</p><Link to='/new'> create a new ticket.</Link></div>
-            {faq.map((element: {title:string; tags:string[]; content:string}, index: number) => {
-                return <Accordian addHeightToParent={() => {}} key={index} title={element.title} tags={element.tags} content={element.content}/>
-            })}
+            {faq.map(((element, index) => {
+                return <Accordian key={index} addCloseButton={false} addHeightToParent={() => {}} ticket={{...element, id: `${index}`, status: 'closed'}}/>
+            }))}
         </div>
     );
 }

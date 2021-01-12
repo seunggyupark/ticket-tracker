@@ -1,26 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+
+import { TicketInterface } from '../../../store/reducer'
 
 import Accordian from "../Accordian/Accordian";
 import "../Accordian/Accordian.scss";
 
 interface AccordianContainerProps {
-  info: {
-    title: string;
-    amount: number;
-    tickets: {
-      title: string;
-      tags: string[];
-      content: string;
-    }[];
-  };
+  title: string;
+  tickets: TicketInterface[];
+  addCloseButton: boolean;
 }
 
 const AccordianContainer: React.FC<AccordianContainerProps> = (props) => {
   const [maxHeight, setMaxHeight] = useState<number>(0);
   const [active, setActive] = useState<boolean>(false);
   const content = useRef<HTMLDivElement>(null);
+  const {tickets, title, addCloseButton} = props;
+  const [ticketCount, setTicketCount] = useState(tickets.length);
 
-  const toggleHandler = () => {
+  const toggleHandler = useCallback(() => {
     if (!active && content.current) {
       setActive(true);
       setMaxHeight(content.current.scrollHeight);
@@ -28,7 +26,15 @@ const AccordianContainer: React.FC<AccordianContainerProps> = (props) => {
       setActive(false);
       setMaxHeight(0);
     }
-  };
+  }, [active]);
+
+  useEffect(() => {
+    if (ticketCount !== tickets.length && active) {
+      setActive(true);
+      setMaxHeight(content.current!.scrollHeight);
+      setTicketCount(tickets.length);
+    }
+  }, [active, tickets, ticketCount]);
 
   const addHeightToParent = (num: number) =>
     setMaxHeight((prevState) => prevState + num);
@@ -40,8 +46,8 @@ const AccordianContainer: React.FC<AccordianContainerProps> = (props) => {
         onClick={toggleHandler}
       >
         <div className="accordian__title">
-          <p>{props.info.title}</p>
-          <p>({props.info.amount})</p>
+          <p>{title}</p>
+          <p>({tickets.length})</p>
         </div>
         <i className={`fas fa-chevron-right ${active && "rotate"}`}></i>
       </button>
@@ -50,12 +56,12 @@ const AccordianContainer: React.FC<AccordianContainerProps> = (props) => {
         ref={content}
         style={{ maxHeight: `${maxHeight}px` }}
       >
-        {props.info.tickets.map((element, index) => (
+        {tickets.map((element) => (
           <Accordian
+            key={element.id}
             addHeightToParent={addHeightToParent}
-            title={element.title}
-            tags={element.tags}
-            content={element.content}
+            ticket={element}
+            addCloseButton={addCloseButton}
           />
         ))}
       </div>

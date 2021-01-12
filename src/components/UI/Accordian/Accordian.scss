@@ -59,6 +59,27 @@
   transition: max-height 0.4s ease;
 }
 
+.accordian__content-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 15px;
+
+  i {
+    color: #e62828;
+    font-size: 14px;
+    cursor: pointer;
+    
+    div {
+      display: inline-block;
+      font-family: "Segoe UI";
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
+
 .accordian__text {
   padding: 15px;
   font-size: 14px;
