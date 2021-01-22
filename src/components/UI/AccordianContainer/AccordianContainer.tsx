@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 
-import { TicketInterface } from '../../../store/reducer'
+import { TicketInterface } from '../../../pages/ticketsSlice';
 
 import Accordian from "../Accordian/Accordian";
 import "../Accordian/Accordian.scss";

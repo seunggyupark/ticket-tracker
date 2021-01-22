@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import './NewTicket.scss';
 import { uuid } from 'uuidv4';
 import { useDispatch } from 'react-redux';
-import * as actionTypes from '../store/actionTypes';
 
-import { TicketInterface } from '../store/reducer';
+import { addTicket } from './ticketsSlice'
+import { TicketInterface } from './ticketsSlice';
 import Modal from '../components/Modal';
 
 const defaultTags = [
@@ -37,7 +37,7 @@ const NewTicket: React.FC = () => {
                 tags: tags.map(ele => ele.tag),
                 title
             }
-            dispatch({type: actionTypes.ADD_TICKET, payload: ticket});
+            dispatch(addTicket(ticket));
             setShowModal(true);
             setTags([...defaultTags]);
             contentRef.current.value = '';

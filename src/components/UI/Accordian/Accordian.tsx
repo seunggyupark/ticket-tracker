@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import './Accordian.scss'
-import { TicketInterface } from '../../../store/reducer'; 
+import { TicketInterface } from '../../../pages/ticketsSlice'; 
 import { useDispatch } from 'react-redux';
-import * as actionTypes from '../../../store/actionTypes';
+import { closeTicket } from '../../../pages/ticketsSlice';
 
 import Tag from './Tag';
 
@@ -18,9 +18,7 @@ const Accordian: React.FC<AccordianProps> = (props) => {
     const content = useRef<HTMLDivElement>(null);
 
     const dispatch = useDispatch();
-    const closeTicket = () => {
-        dispatch({type: actionTypes.CLOSE_TICKET, payload: props.ticket})
-    };
+    const closeTicketHandler = () => dispatch(closeTicket(props.ticket));
 
     const toggleHandler = () => {
         if (!active && content.current) {
@@ -49,7 +47,7 @@ const Accordian: React.FC<AccordianProps> = (props) => {
                 <div className="accordian__text">{props.ticket.content}</div>
                 {props.addCloseButton &&
                     <div className="accordian__content-buttons">
-                        <div onClick={closeTicket}><i className="far fa-times-circle"><div>&nbsp;Close Ticket</div></i></div>
+                        <div onClick={closeTicketHandler}><i className="far fa-times-circle"><div>&nbsp;Close Ticket</div></i></div>
                     </div>
                 }
             </div>

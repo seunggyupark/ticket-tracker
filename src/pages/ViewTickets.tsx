@@ -1,14 +1,14 @@
 import React from 'react';
 import './ViewTickets.scss'
 import { useSelector } from 'react-redux';
-import { StateInterface, TicketInterface } from '../store/reducer';
+import {RootState} from '../app/rootReducer';
 
 import AccordianContainer from '../components/UI/AccordianContainer/AccordianContainer';
 
 const ViewTickets: React.FC = props => {
-    const tickets = useSelector<StateInterface, TicketInterface[]>(state => state.tickets.items)
-    const openTickets = tickets.filter(ticket => ticket.status === 'open');
-    const closedTickets = tickets.filter(ticket => ticket.status === 'closed');
+    const { items } = useSelector((state: RootState) => state.tickets)
+    const openTickets = items.filter(ticket => ticket.status === 'open');
+    const closedTickets = items.filter(ticket => ticket.status === 'closed');
 
     return (
         <div className="viewTickets__tickets">
